@@ -105,6 +105,15 @@ void login() {
 
 }
 
+
+void displayList() {
+    User* temp = head;
+    while (temp != NULL) {
+        cout << setw(25) << left << temp->username << setw(25) << temp->password << endl;
+        temp = temp->nextNode;
+    }
+}
+
 void showMenu() {
     int choice;
     cout << "Welcome to the Top Uni Recommendation System" << endl;
@@ -150,8 +159,8 @@ void showMenu() {
 
 int main() {
     importUserFile();
-    showMenu();
-    // displayList();
+    //showMenu();
+     displayList();
 }
 
 
