@@ -11,7 +11,7 @@ using namespace std;
 
 
 //Function: To read user data from CSV and save it into singly linked list
-void readUserData(User*& head) {
+void readUserData(User*& userHead) {
 
     const string fileName = "User.csv";
 
@@ -41,12 +41,12 @@ void readUserData(User*& head) {
             //Create new User object and add it to singly linked list
             User* newUser = new User{ userId, username, password, name, email, phoneNumber, gender };
 
-            if (head == nullptr) {
-                head = newUser;
+            if (userHead == nullptr) {
+                userHead = newUser;
             }
 
             else {
-                User* current = head;
+                User* current = userHead;
 
                 while (current->next != nullptr) {
                     current = current->next;

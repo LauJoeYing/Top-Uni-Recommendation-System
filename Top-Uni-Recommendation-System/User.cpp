@@ -9,7 +9,7 @@ using namespace std;
 // Function to log in the user
 // Prompt user for login credentials and user type
 
-User* login(User* head) {
+User* login(User* userHead) {
 
     string username, password;
     int userType;
@@ -37,7 +37,7 @@ User* login(User* head) {
         cin >> password;
 
         // Transverse singly linked list and check user credentials
-        User* current = head;
+        User* current = userHead;
         while (current) {
             if (current->username == username && current->password == password) {
                 cout << "Login successful!" << endl;
@@ -90,6 +90,6 @@ void displayMenu(User* current) {
 }
 
 
-// Function to calculate the time difference in seconds
+// Function to calculate the time difference in ms
 
-// Function to log out the user and display the session time
+

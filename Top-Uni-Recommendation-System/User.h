@@ -14,5 +14,5 @@ struct User {
     User* next;
 };
 
-User* login(User* head);
+User* login(User* userHead);
 void displayMenu(User* current);
