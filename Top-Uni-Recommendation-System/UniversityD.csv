@@ -1,0 +1,41 @@
+﻿Rank,Institution,LocationCode,Location,ArScore,ArRank,ErScore,ErRank,FsrScore,FsrRank,CpfScore,CpfRank,IfrScore,IfrRank,IsrScore,IsrRank,IrnScore,IrnRank,GerScore,GerRank,ScoreScaled,Region,Total Pick
+1,Massachusetts Institute of Technology (MIT) ,US,United States,100,5,100,4,100,14,100,5,100,54,90,109,96.1,58,100,3,100,North America,65
+2,University of Cambridge,UK,United Kingdom,100,2,100,2,100,11,92.3,55,100,60,96.3,70,99.5,6,100,9,98.8,Europe,91
+3,Stanford University,US,United States,100,4,100,5,100,6,99.9,9,99.8,74,60.3,235,96.3,55,100,2,98.5,North America,6
+4,University of Oxford,UK,United Kingdom,100,3,100,3,100,8,90,64,98.8,101,98.4,54,99.9,3,100,7,98.4,Europe,74
+5,Harvard University,US,United States,100,1,100,1,99.4,35,100,2,76.9,228,66.9,212,100,1,100,1,97.6,North America,49
+6,California Institute of Technology (Caltech),US,United States,96.5,28,87.1,58,100,3,100,4,99.8,75,85.1,134,73,425,98.8,24,97,North America,63
+7,Imperial College London,UK,United Kingdom,98.3,24,99.7,10,99.5,34,86.5,84,100,55,100,13,98.1,20,88.8,76,97,Europe,45
+8,UCL,UK,United Kingdom,99.4,14,98.6,16,97.6,51,77,119,99.2,87,100,14,100,2,90.3,71,95,Europe,35
+9,ETH Zurich - Swiss Federal Institute of Technology,CH,Switzerland,98.6,18,91.3,51,74.2,164,99.2,18,100,24,98,59,96.2,56,91.1,64,93.6,Europe,34
+10,University of Chicago,US,United States,99.2,16,92.2,46,92.9,71,86.8,79,81.6,214,76,176,89.6,170,98.2,30,93.2,North America,22
+11,National University of Singapore (NUS),SG,Singapore,99.5,13,94.1,36,79.8,136,91.8,58,100,33,73.5,187,89.9,165,99.6,16,92.7,Asia,7
+12,Peking University,CN,China (Mainland),99.3,15,96.5,28,87.3,98,96.7,34,57.1,323,36.9,376,77.5,354,91.4,59,91.3,Asia,10
+13,University of Pennsylvania,US,United States,96.5,29,92.5,45,99.9,23,70.9,142,96.2,128,66.1,215,93.3,104,100,5,90.6,North America,98
+14,Tsinghua University,CN,China (Mainland),98.9,17,97.7,23,92.8,72,98.1,24,16.7,601,25.7,462,75.5,381,87.1,80,90.1,Asia,5
+15,The University of Edinburgh,UK,United Kingdom,98,26,97.2,24,81.1,129,70.1,149,98.9,98,99.5,38,98.7,15,54.3,219,89.5,Europe,100
+16,EPFL,CH,Switzerland,83.7,59,71.8,93,91.1,82,99.4,15,100,17,100,11,87.3,207,28,451,89.2,Europe,11
+17,Princeton University,US,United States,99.9,10,98.9,14,72.6,172,100,3,26,515,62.2,226,78.5,340,100,8,89.2,North America,36
+18,Yale University,US,United States,99.9,9,100,7,100,2,51.5,249,89.2,179,77.3,165,92,123,100,4,89,North America,18
+19,Nanyang Technological University Singapore (NTU),SG,Singapore,90.4,42,76.1,81,83.2,120,94.1,49,100,30,74.1,186,89.6,169,84.6,86,88.4,Asia,55
+20,Cornell University,US,United States,98.3,23,91.4,50,62.2,245,99.3,17,63.9,290,55.3,256,90,161,99.5,19,87.2,North America,40
+21,The University of Hong Kong,HK,Hong Kong SAR,97.4,27,62.9,119,84.2,113,72.6,131,100,27,98.7,50,81.1,303,99,23,87,Asia,22
+22,Columbia University,US,United States,99.7,11,98.1,20,100,12,47.2,282,47.6,369,94.6,85,98.9,14,99.8,11,86.7,North America,24
+23,The University of Tokyo,JP,Japan,100,7,99.7,9,91.9,78,73.3,128,10.4,601,27.8,448,89.5,174,97.8,33,85.3,Asia,78
+24,Johns Hopkins University,US,United States,87.9,49,47.2,198,100,5,87.3,76,63.6,294,82.9,145,97.7,27,95.3,42,85.1,North America,41
+25,University of Michigan-Ann Arbor,US,United States,98.5,22,91.3,52,88.9,92,62.5,190,71.2,253,33.1,404,96.3,52,96,40,84.4,North America,19
+26,Université PSL,FR,France,74.4,78,97,25,99.8,24,84.1,96,59.7,308,83.6,142,99.7,4,53.9,227,83.8,Europe,10
+27,University of California Berkeley (UCB),US,United States,100,6,100,6,23.9,599,99.9,10,93.3,155,57.7,248,96.7,45,99.1,21,82.7,North America,8
+28,The University of Manchester,UK,United Kingdom,95.1,33,97.7,22,63.1,234,59,207,93.4,152,99.4,41,98.9,13,66.4,158,82.3,Europe,68
+29,Seoul National University,KR,South Korea,98.6,19,97.8,21,87,100,70.3,147,12.2,601,10.3,601,79.3,329,97.7,34,82.2,Asia,40
+30,The Australian National University,AU,Australia,93.6,35,70.1,95,38,404,99.3,16,100,37,96,71,94.6,86,59.1,192,82.1,Oceania,65
+31,McGill University,CA,Canada,93.3,36,93.6,39,68.9,193,59.6,203,87.6,188,95.1,77,95.2,69,90,72,81.9,North America,77
+32,Northwestern University,US,United States,84.4,56,71.9,92,98.3,45,84.2,95,40.5,401,38.8,351,89,183,98.4,29,81.8,North America,74
+33,The University of Melbourne,AU,Australia,98.6,20,94.9,34,17.9,601,95,45,93.1,157,99.8,30,97.6,30,91.1,63,81.6,Oceania,84
+34,Fudan University,CN,China (Mainland),83.6,60,93.5,40,89.3,88,70.4,146,89.3,178,38.7,355,70.6,457,65.7,164,81.5,Asia,14
+35,University of Toronto,CA,Canada,99.6,12,98.3,18,65.6,219,43.5,313,95.8,132,95.7,74,96.7,46,94,45,81.5,North America,75
+36,Kyoto University,JP,Japan,98.6,21,98.9,15,94.8,62,54.2,234,14.9,601,22.1,503,85.5,233,56.9,201,81.4,Asia,80
+37,King's College London,UK,United Kingdom,88.8,47,83.2,66,74.5,162,60.5,198,98.6,104,100,21,99.3,8,56.9,200,81.2,Europe,12
+38,The Chinese University of Hong Kong (CUHK),HK,Hong Kong SAR,87.3,51,49.6,177,60.9,250,92.9,53,100,58,90.5,108,74.9,398,79.4,108,80.6,Asia,91
+39,New York University (NYU),US,United States,95.9,32,99,13,98.1,48,28.9,440,31.3,463,94.4,87,92,122,99.7,13,80.3,North America,5
+40,The Hong Kong University of Science and Technology,HK,Hong Kong SAR,82,64,50.1,172,62.6,239,98.6,20,100,20,87.9,121,56.2,601,91.2,61,79.8,Asia,53

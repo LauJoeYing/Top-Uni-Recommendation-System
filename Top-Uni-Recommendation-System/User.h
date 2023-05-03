@@ -1,5 +1,6 @@
 #include <string>
-
+#ifndef USER_H
+#define USER_H
 using namespace std;
 
 struct User {
@@ -16,3 +17,5 @@ struct User {
 
 User* login(User* head);
 void displayMenu(User* current);
+
+#endif

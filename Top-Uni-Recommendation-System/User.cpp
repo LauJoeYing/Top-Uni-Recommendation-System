@@ -3,6 +3,7 @@
 #include <ctime>
 #include <iostream>
 #include "User.h"
+#include "University.h"
 
 using namespace std;
 
@@ -79,11 +80,8 @@ void displayMenu(User* current) {
         cout << "          Welcome, " << current->name << "!      \n";
         cout << "+---------------------------------------------+\n\n";
         cout << "\n===== User Type: Registered Customer  =====\t\n\n";
-        cout << "[ 1 ] - Sort University in Order\n";
-        cout << "[ 2 ] - Search University Details\n";
-        cout << "[ 3 ] - Feedback Mailbox\n";
-        cout << "[ 4 ] - Logout\n\n";
-        cout << "Please Select Your Option:\t";
+
+
         break;
 
     }
