@@ -7,6 +7,7 @@
 #include <sstream>
 #include <chrono>
 #include <iomanip>
+#include "University.h"
 
 using namespace std;
 
@@ -28,7 +29,7 @@ void displayMenu(User* current);
 // Function to log in the user
 // Prompt user for login credentials and user type
 
-User* login(User* head) {
+User* login(User* userHead) {
 
     string username, password;
     int userType;
@@ -56,7 +57,7 @@ User* login(User* head) {
         cin >> password;
 
         // Transverse singly linked list and check user credentials
-        User* current = head;
+        User* current = userHead;
         while (current) {
             if (current->username == username && current->password == password) {
                 cout << "Login successful!" << endl;
@@ -78,6 +79,7 @@ User* login(User* head) {
 void displayMenu(User* current) {
 
     int userType = 2;
+    int option;
 
     switch (userType) {
 
@@ -98,8 +100,43 @@ void displayMenu(User* current) {
         cout << "          Welcome, " << current->name << "!      \n";
         cout << "+---------------------------------------------+\n\n";
         cout << "\n===== User Type: Registered Customer  =====\t\n\n";
-
-
+        cout << "[ 1 ] - Sort University in Order\n";
+        cout << "[ 2 ] - Search University Details\n";
+        cout << "[ 3 ] - Feedback Mailbox\n";
+        cout << "[ 4 ] - Logout\n\n";
+        cout << "Please Select Your Option:\t";
+        cin >> option;
+        system("cls");
+        if (option == 1) {
+            importUni();
+            cout << "1.Sort by Location? 2. Sort by ArScore ? 3.Sort by FrcScore?";
+            cin >> option;
+            if (option == 1) {
+                quickSort(getHeadRef(), compareLocation);
+            }
+            else if (option == 2) {
+                quickSort(getHeadRef(), compareArScore);
+            }
+            else if (option == 3) {
+                quickSort(getHeadRef(), compareFrcScore);
+            }
+            else {
+                cout << "Invalid Option";
+            }
+            printTable();
+        }
+        else if (option == 2) {
+			//searchUni();
+		}
+        else if (option == 3) {
+			//feedbackMailbox();
+		}
+        else if (option == 4) {
+			//logout();
+		}
+        else {
+			cout << "Invalid Option";
+		}
         break;
 
     }

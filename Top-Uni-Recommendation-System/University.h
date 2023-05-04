@@ -47,6 +47,8 @@ struct Uni {
    
 }*tail, *head;
 
+
+
 void insertAtEnd(int Rank, std::string Institution, std::string LocationCode, std::string Location, double ArScore, int ArRank, double ErScore, int ErRank, double FsrScore, int FsrRank, double CpfScore, int CpfRank, double IfrScore, int IfrRank, double IsrScore, int IsrRank, double IrnScore, int IrnRank, double GerScore, int GerRank, double ScoreScaled, std::string Region, int TotalPick) {
     Uni* newNode = new Uni{ Rank, Institution, LocationCode, Location, ArScore, ArRank, ErScore, ErRank, FsrScore, FsrRank, CpfScore, CpfRank, IfrScore, IfrRank, IsrScore, IsrRank, IrnScore, IrnRank, GerScore, GerRank, ScoreScaled, Region, TotalPick,nullptr,nullptr };
     if (head == NULL) {
@@ -116,34 +118,12 @@ void theTopLines() {
     return;
 }
 
-void firstPrint() {
-    theTopLines();
-    int count = 0;
-    Uni* temp = head;
-    while (temp != NULL) {
-        if (count < 20) {
-            cout << "|" << setw(widthArray[0]) << left << temp->Rank << "|" << setw(widthArray[1]) << left << temp->Institution << "|" << setw(widthArray[2]) << left << temp->LocationCode << "|" << setw(widthArray[3]) << left << temp->Location << "|" << setw(widthArray[4]) << left << temp->ArScore << "|" << setw(widthArray[5]) << left << temp->ArRank << "|" << setw(widthArray[6]) << left << temp->ErScore << "|" << setw(widthArray[7]) << left << temp->ErRank << "|" << setw(widthArray[8]) << left << temp->FsrScore << "|" << setw(widthArray[9]) << left << temp->FsrRank << "|" << setw(widthArray[10]) << left << temp->CpfScore << "|" << setw(widthArray[11]) << left << temp->CpfRank << "|" << setw(widthArray[12]) << left << temp->IfrScore << "|" << setw(widthArray[13]) << left << temp->IfrRank << "|" << setw(widthArray[14]) << left << temp->IsrScore << "|" << setw(widthArray[15]) << left << temp->IsrRank << "|" << setw(widthArray[16]) << left << temp->IrnScore << "|" << setw(widthArray[17]) << left << temp->IrnRank << "|" << setw(widthArray[18]) << left << temp->GerScore << "|" << setw(widthArray[19]) << left << temp->GerRank << "|" << setw(widthArray[20]) << left << temp->ScoreScaled << "|" << setw(widthArray[21]) << left << temp->Region << "|" << setw(widthArray[22]) << left << temp->TotalPick << "|" << endl;
-            printTopBorder();
-            temp = temp->nextNode;
-            count++;
-        }
-        else {
-            count = 0;
-            cout << "Press Enter To Continue" << endl;
-            // getchar();
-            cin.clear();
-            cin.ignore(10000, '\n');
-            system("cls");
-            return;
-        }
-    }
-}
-
 
 //Display Table with width fixed to widthArray position
 void printTable() {
     theTopLines();
     char choice;
+    int currentPage = 1;
     Uni* temp = head;
     while (temp != NULL) {
         if (cnt < 20) {
@@ -159,23 +139,24 @@ void printTable() {
             switch (choice) {
 
             case '<':
-                system("cls");
-                theTopLines();
-                for (int k = 0; k < 40; k++) {
-                    temp = temp->prevNode;
+                if (currentPage > 1) {
+                    system("cls");
+                    theTopLines();
+                    for (int k = 0; k < 40; k++) {
+                        temp = temp->prevNode;
+                    }
+                    cnt = 0;
+                    currentPage--;
                 }
-                cnt = 0;
+                else {
+                    std::cout << "You are already on the first page. Cannot go back further." << std::endl;
+                }
                 break;
             case '>':
                 system("cls");
                 theTopLines();
                 cnt = 0;
-                break;
-            case 's':
-                system("cls");
-                /*Uni** headRef = &head;
-                quickSort(getHeadRef());
-                printTable();*/
+                currentPage++;
                 break;
             case 'q':
                 system("cls");
@@ -186,12 +167,48 @@ void printTable() {
                 std::cout << "Invalid input!" << std::endl;
                 return;
             }
+
         }
     }
 
     return;
 }
 
+Uni* navigatePages(Uni* temp, char choice, int& currentPage) {
+    switch (choice) {
+    case '<':
+        if (currentPage > 1) {
+            for (int k = 0; k < 20; k++) {
+                temp = temp->prevNode;
+            }
+            currentPage--;
+        }
+        else {
+            std::cout << "You are already on the first page. Cannot go back further." << std::endl;
+        }
+        break;
+    case '>':
+        currentPage++;
+        break;
+    default:
+        std::cout << "Invalid input!" << std::endl;
+        break;
+    }
+    return temp;
+}
+
+
+bool compareLocation(Uni* a, Uni* b) {
+    return a->Location < b->Location;
+}
+
+bool compareArScore(Uni* a, Uni* b) {
+    return a->ArScore < b->ArScore;
+}
+
+bool compareFrcScore(Uni* a, Uni* b) {
+    return a->FsrScore < b->FsrScore;
+}
 
 Uni* getTail(Uni* cur) {
     while (cur != NULL && cur->nextNode != NULL)
@@ -203,13 +220,13 @@ Uni** getHeadRef() {
     return &head;
 }
 
-Uni* partition(Uni* head, Uni* end, Uni** newHead, Uni** newEnd) {
+Uni* partition(Uni* head, Uni* end, Uni** newHead, Uni** newEnd, bool (*compare)(Uni*, Uni*)) {
     Uni* pivot = end;
     Uni* prev = NULL, * cur = head, * tail = pivot;
 
     while (cur != pivot) {
-        if (cur->ScoreScaled < pivot->ScoreScaled) {                   //Change the sorting criteria here (e.g. If u want name, change to cur->Institution) (e.g. If u want ArScore, change to cur->ArScore)
-            if ((*newHead) == NULL)                                    //Do the ascending Descending choice urself
+        if (compare(cur, pivot)) {
+            if ((*newHead) == NULL)                                   
                 (*newHead) = cur;
 
             prev = cur;
@@ -234,13 +251,15 @@ Uni* partition(Uni* head, Uni* end, Uni** newHead, Uni** newEnd) {
     return pivot;
 }
 
-Uni* quickSortRecur(Uni* head, Uni* end) {
+Uni* quickSortRecur(Uni* head, Uni* end, bool (*compare)(Uni*, Uni*)) {
+
+
     if (!head || head == end)
         return head;
 
     Uni* newHead = NULL, * newEnd = NULL;
 
-    Uni* pivot = partition(head, end, &newHead, &newEnd);
+    Uni* pivot = partition(head, end, &newHead, &newEnd, compare);
 
     if (newHead != pivot) {
         Uni* tmp = newHead;
@@ -248,26 +267,47 @@ Uni* quickSortRecur(Uni* head, Uni* end) {
             tmp = tmp->nextNode;
         tmp->nextNode = NULL;
 
-        newHead = quickSortRecur(newHead, tmp);
+        newHead = quickSortRecur(newHead, tmp, compare);
 
         tmp = getTail(newHead);
         tmp->nextNode = pivot;
     }
 
-    pivot->nextNode = quickSortRecur(pivot->nextNode, newEnd);
+    pivot->nextNode = quickSortRecur(pivot->nextNode, newEnd,compare);
 
     return newHead;
 }
 
-void quickSort(Uni** headRef) {
-    (*headRef) = quickSortRecur(*headRef, getTail(*headRef));
+void quickSort(Uni** headRef, bool (*compare)(Uni*, Uni*)) {
+    (*headRef) = quickSortRecur(*headRef, getTail(*headRef), compare);
     return;
 }
-//void importUni();
-//Uni* getTail();
-//Uni** getHeadRef();
-//void printTable();
-//void firstPrint();
-//void quickSort(Uni** headRef);
+
+
+//int main()
+//{
+//    int option;
+//    importUni();
+//    printTable();
+//    cout << "Welcome";
+//    cout << "1.Sort by Location? 2. Sort by ArScore ? 3.Sort by FrcScore?";
+//    cin >> option;
+//    if (option == 1) {
+//        quickSort(getHeadRef(), compareLocation);
+//    }
+//    else if (option == 2) {
+//        quickSort(getHeadRef(), compareArScore);
+//    }
+//    else if (option == 3) {
+//        quickSort(getHeadRef(), compareFrcScore);
+//    }
+//    else {
+//        cout << "Invalid Option";
+//    }
+//    printTable();
+//
+//
+//}
+
 
 #endif
