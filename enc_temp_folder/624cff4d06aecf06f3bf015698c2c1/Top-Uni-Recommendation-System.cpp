@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-	User *userHead = nullptr;
+	User *userHead;
 	readUserData(userHead);
 	User* current = login(userHead);
 }
