@@ -12,7 +12,6 @@ int main()
 {
     importUni();
     firstPrint();
-    Uni** headRef = &head;
     quickSort(getHeadRef());
     printTable();
 

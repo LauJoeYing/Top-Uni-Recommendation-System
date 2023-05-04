@@ -8,11 +8,13 @@
 #include <chrono>
 #include <iomanip>
 
+using namespace std;
+
 int widthArray[23] = { 4,83,12,30,7,6,7,6,8,7,8,7,8,7,8,7,8,7,8,7,11,13,10 };
 int cnt = 0;
 std::string chgPage = "Type '<' to go to prev page, '>' to go to next page, or 'q' to quit: ";
 
-using namespace std;
+
 
 //LinkedList of dataset Rank,Institution,LocationCode,Location,ArScore,ArRank,ErScore,ErRank,FsrScore,FsrRank,CpfScore,CpfRank,IfrScore,IfrRank,IsrScore,IsrRank,IrnScore,IrnRank,GerScore,GerRank,ScoreScaled
 struct Uni {
