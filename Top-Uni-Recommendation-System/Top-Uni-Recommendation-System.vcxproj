@@ -127,11 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FeedbackFH.cpp" />
+    <ClCompile Include="Feedback.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Fav.cpp" />
-    <ClCompile Include="UserFH.cpp" />
-    <ClCompile Include="UniFH.cpp" />
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="University.cpp" />
     <ClCompile Include="Top-Uni-Recommendation-System.cpp" />
   </ItemGroup>
   <ItemGroup>
