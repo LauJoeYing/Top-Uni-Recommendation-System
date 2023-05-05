@@ -18,5 +18,34 @@
     <ClCompile Include="Top-Uni-Recommendation-System.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Feedback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fav.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="University.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Fav.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FeedbackFH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UniFH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserFH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
