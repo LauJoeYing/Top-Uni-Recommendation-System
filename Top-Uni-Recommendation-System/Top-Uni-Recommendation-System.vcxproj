@@ -127,7 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FeedbackFH.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Fav.cpp" />
+    <ClCompile Include="UserFH.cpp" />
+    <ClCompile Include="UniFH.cpp" />
     <ClCompile Include="Top-Uni-Recommendation-System.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Fav.h" />
+    <ClInclude Include="FeedbackFH.h" />
+    <ClInclude Include="UniFH.h" />
+    <ClInclude Include="UserFH.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
