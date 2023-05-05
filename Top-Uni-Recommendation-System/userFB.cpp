@@ -3,8 +3,6 @@
 
 using namespace std;
 
-
-
 void userViewFeedbackList() {
     int i = 1;
     Feedback* temp = fbHead;
