@@ -127,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Reg.cpp" />
     <ClCompile Include="Top-Uni-Recommendation-System.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UserFH.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

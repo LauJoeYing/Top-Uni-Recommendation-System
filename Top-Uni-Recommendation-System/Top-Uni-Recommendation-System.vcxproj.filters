@@ -18,5 +18,13 @@
     <ClCompile Include="Top-Uni-Recommendation-System.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Reg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UserFH.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
