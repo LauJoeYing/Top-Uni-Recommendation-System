@@ -23,38 +23,38 @@ void insertUni(int Rank, string Institution, string LocationCode, string Locatio
 }
 
 void importUniFile() {
-    ifstream file;
-    file.open("University.csv");
+    ifstream uniFile;
+    uniFile.open("University.csv");
     string line;
-    getline(file, line);
-    while (getline(file, line)) {
+    getline(uniFile, line);
+    while (getline(uniFile, line)) {
         stringstream ss(line);
-        string Rank, Institution, LocationCode, Location, Region, ArScore, ArRank, ErScore, ErRank, FsrScore, FsrRank, CpfScore, CpfRank, IfrScore, IfrRank, IsrScore, IsrRank, IrnScore, IrnRank, GerScore, GerRank, ScoreScaled, TotalPick;
-        getline(ss, Rank, ',');
-        getline(ss, Institution, ',');
-        getline(ss, LocationCode, ',');
-        getline(ss, Location, ',');
-        getline(ss, ArScore, ',');
-        getline(ss, ArRank, ',');
-        getline(ss, ErScore, ',');
-        getline(ss, ErRank, ',');
-        getline(ss, FsrScore, ',');
-        getline(ss, FsrRank, ',');
-        getline(ss, CpfScore, ',');
-        getline(ss, CpfRank, ',');
-        getline(ss, IfrScore, ',');
-        getline(ss, IfrRank, ',');
-        getline(ss, IsrScore, ',');
-        getline(ss, IsrRank, ',');
-        getline(ss, IrnScore, ',');
-        getline(ss, IrnRank, ',');
-        getline(ss, GerScore, ',');
-        getline(ss, GerRank, ',');
-        getline(ss, ScoreScaled, ',');
-        getline(ss, Region, ',');
-        getline(ss, TotalPick, ',');
-        insertUni(stoi(Rank), Institution, LocationCode, Location, stod(ArScore), stoi(ArRank), stod(ErScore), stoi(ErRank), stod(FsrScore), stoi(FsrRank), stod(CpfScore), stoi(CpfRank), stod(IfrScore), stoi(IfrRank), stod(IsrScore), stoi(IsrRank), stod(IrnScore), stoi(IrnRank), stod(GerScore), stoi(GerRank), stod(ScoreScaled), Region, stoi(TotalPick));
+        string rank, institution, locationCode, location, region, arScore, arRank, erScore, erRank, fsrScore, fsrRank, cpfScore, cpfRank, ifrScore, ifrRank, isrScore, isrRank, irnScore, irnRank, gerScore, gerRank, scoreScaled, totalPick;
+        getline(ss, rank, ',');
+        getline(ss, institution, ',');
+        getline(ss, locationCode, ',');
+        getline(ss, location, ',');
+        getline(ss, arScore, ',');
+        getline(ss, arRank, ',');
+        getline(ss, erScore, ',');
+        getline(ss, erRank, ',');
+        getline(ss, fsrScore, ',');
+        getline(ss, fsrRank, ',');
+        getline(ss, cpfScore, ',');
+        getline(ss, cpfRank, ',');
+        getline(ss, ifrScore, ',');
+        getline(ss, ifrRank, ',');
+        getline(ss, isrScore, ',');
+        getline(ss, isrRank, ',');
+        getline(ss, irnScore, ',');
+        getline(ss, irnRank, ',');
+        getline(ss, gerScore, ',');
+        getline(ss, gerRank, ',');
+        getline(ss, scoreScaled, ',');
+        getline(ss, region, ',');
+        getline(ss, totalPick, ',');
+        insertUni(stoi(rank), institution, locationCode, location, stod(arScore), stoi(arRank), stod(arScore), stoi(erRank), stod(fsrScore), stoi(fsrRank), stod(cpfScore), stoi(cpfRank), stod(ifrScore), stoi(ifrRank), stod(isrScore), stoi(isrRank), stod(irnScore), stoi(irnRank), stod(gerScore), stoi(gerRank), stod(scoreScaled), region, stoi(totalPick));
     }
-    file.close();
+    uniFile.close();
 }
 
