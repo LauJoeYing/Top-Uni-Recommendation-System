@@ -24,7 +24,7 @@ void insertUni(int Rank, string Institution, string LocationCode, string Locatio
 
 void importUniFile() {
     ifstream file;
-    file.open("UniversityDataset.csv");
+    file.open("University.csv");
     string line;
     getline(file, line);
     while (getline(file, line)) {
