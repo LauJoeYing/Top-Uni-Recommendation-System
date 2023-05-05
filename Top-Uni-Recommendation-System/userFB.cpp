@@ -1,5 +1,3 @@
-#pragma once
-
 #include "userFB.h"
 #include "FeedbackFH.h"
 
