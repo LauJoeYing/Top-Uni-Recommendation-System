@@ -24,4 +24,4 @@ struct Feedback{
 
     Feedback *nextNode;
     Feedback *prevNode;
-}*fbHead, *fbTail;
+}*feedbackHead, *feedbackTail;

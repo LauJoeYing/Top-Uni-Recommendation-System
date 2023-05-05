@@ -14,13 +14,13 @@ void insertFb(string feedbackID, string userName, string adminName, string subje
     newNode->nextNode = NULL;
     newNode->prevNode = NULL;
 
-    if(fbHead == NULL){
-        fbHead = newNode;
-        fbTail = newNode;
+    if(feedbackHead == NULL){
+        feedbackHead = newNode;
+        feedbackTail = newNode;
     }else{
-        fbTail->nextNode = newNode;
-        newNode->prevNode = fbTail;
-        fbTail = newNode;
+        feedbackTail->nextNode = newNode;
+        newNode->prevNode = feedbackTail;
+        feedbackTail = newNode;
     }
 }
 
@@ -48,7 +48,7 @@ void importFeedbackFile(){
 void writeFeedbackFile(){
     ofstream feedbackFile;
     feedbackFile.open("Feedback.csv");
-    Feedback *temp = fbHead;
+    Feedback *temp = feedbackHead;
     while(temp != NULL){
         feedbackFile << temp->feedbackID << "," << temp->userName << "," << temp->adminName << "," << temp->subject << "," << temp->feedbackMessage << "," << temp->replyMessage << "," << temp->date << endl;
         temp = temp->nextNode;
