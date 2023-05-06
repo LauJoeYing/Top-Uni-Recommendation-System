@@ -13,7 +13,7 @@ using namespace std;
 struct User;
 
 void importUserFile();
-void insertUser(string userId, string username, string password, string realName, string email, string phoneNo, string gender);
+void insertUser(string userId, string username, string password, string realName, string email, string phoneNo, string gender, string lastLoginDate);
 
 
 struct User{

@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void insertUser(string userId, string username, string password, string realName, string email, string phoneNo, string gender) {
+void insertUser(string userId, string username, string password, string realName, string email, string phoneNo, string gender, string lastLoginDate) {
     User* newNode = new User;
     newNode->userId = userId;
     newNode->username = username;
@@ -18,6 +18,7 @@ void insertUser(string userId, string username, string password, string realName
     newNode->email = email;
     newNode->phoneNo = phoneNo;
     newNode->gender = gender;
+    newNode->lastLoginDate = lastLoginDate;
     newNode->nextNode = NULL;
     newNode->prevNode = NULL;
 
@@ -43,7 +44,7 @@ void importUserFile() {
     getline(file, line);
     while (getline(file, line)) {
         stringstream ss(line);
-        string userId, username, password, realName, email, phoneNo, gender;
+        string userId, username, password, realName, email, phoneNo, gender, lastLoginDate;
         getline(ss, userId, ',');
         getline(ss, username, ',');
         getline(ss, password, ',');
@@ -51,7 +52,8 @@ void importUserFile() {
         getline(ss, email, ',');
         getline(ss, phoneNo, ',');
         getline(ss, gender, ',');
-        insertUser(userId, username, password, realName, email, phoneNo, gender);
+        getline(ss, lastLoginDate, ',');
+        insertUser(userId, username, password, realName, email, phoneNo, gender, lastLoginDate);
     }
     file.close();
     return;
