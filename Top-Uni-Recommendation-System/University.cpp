@@ -5,12 +5,13 @@
 #include <chrono>
 #include <iomanip>
 
-#include "UniFH.h"
+#include "Univercity.h"
 
 using namespace std;
 
-void insertUni(int Rank, string Institution, string LocationCode, string Location, double ArScore, int ArRank, double ErScore, int ErRank, double FsrScore, int FsrRank, double CpfScore, int CpfRank, double IfrScore, int IfrRank, double IsrScore, int IsrRank, double IrnScore, int IrnRank, double GerScore, int GerRank, double ScoreScaled, string Region, int TotalPick) {
-    Uni* newNode = new Uni{ Rank, Institution, LocationCode, Location, ArScore, ArRank, ErScore, ErRank, FsrScore, FsrRank, CpfScore, CpfRank, IfrScore, IfrRank, IsrScore, IsrRank, IrnScore, IrnRank, GerScore, GerRank, ScoreScaled, Region, TotalPick,nullptr,nullptr };
+void insertUni(int rank, string institution, string locationCode, string location, double arScore, int arRank, double erScore, int erRank, double fsrScore, int fsrRank, double cpfScore, int cpfRank, double ifrScore, int ifrRank, double isrScore, int isrRank, double irnScore, int irnRank, double gerScore, int gerRank, double scoreScaled, string region, int totalPick) {
+    Uni* newNode = new Uni{ rank, institution, locationCode, location, arScore, arRank, erScore, erRank, fsrScore, fsrRank, cpfScore, cpfRank, ifrScore, ifrRank, isrScore, isrRank, irnScore, irnRank, gerScore, gerRank, scoreScaled, region, totalPick,nullptr,nullptr };
+    
     if (uniHead == NULL) {
         uniHead = newNode;
         uniTail = newNode;
@@ -57,4 +58,43 @@ void importUniFile() {
     }
     uniFile.close();
 }
+
+Uni* binarySearchUni(string uniName) {
+
+    Uni* start = uniHead;
+    Uni* end = uniTail;
+    while (start != nullptr && end != nullptr && start != end && end->nextNode != start) {
+        Uni* mid = start;
+        int count = 0;
+        while (mid != nullptr && mid != end && mid != start && end->nextNode != start && count < 100) {
+            mid = mid->nextNode;
+            count++;
+        }
+        if (mid == nullptr || mid == end || mid == start || count >= 100) {
+            break;
+        }
+        if (mid->Institution == uniName) {
+            return mid;
+        }
+        else if (mid->Institution > uniName) {
+            end = mid->prevNode;
+        }
+        else {
+            start = mid->nextNode;
+        }
+    }
+    if (start != nullptr && start->Institution == uniName) {
+        return start;
+    }
+    else if (end != nullptr && end->Institution == uniName) {
+        return end;
+    }
+    else {
+        return nullptr;
+    }
+}
+
+
+
+
 
