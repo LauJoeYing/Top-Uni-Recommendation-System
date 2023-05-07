@@ -19,7 +19,7 @@ void User::login() {
         cin >> userType;
 
         switch (userType) {
-        case 1
+        case 1:
             showGuestMenu();
         case 2: 
         case 3:
@@ -33,14 +33,14 @@ void User::login() {
         cin >> password;
 
         // Transverse singly linked list and check user credentials
-        User* current = userHead;
+        UserList* current = userHead;
         while (current) {
             if (current->username == username && current->password == password) {
                 cout << "Login successful!" << endl;
-                displayMenu(current);
-                return current; // Return pointer to user object
+                //displayMenu(current);
+                return; // Return pointer to user object
             }
-            current = current->next;
+            current = current->nextNode;
         }
 
         // If user not found or credentials don't match, return nullptr
