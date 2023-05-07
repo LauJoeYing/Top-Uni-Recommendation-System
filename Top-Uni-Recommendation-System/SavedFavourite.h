@@ -29,6 +29,7 @@ private:
 
 public:
 	//void getCurrentUser();
+	Favourite* getFavouriteHead();
 
 	SavedFavourite();
 	~SavedFavourite();

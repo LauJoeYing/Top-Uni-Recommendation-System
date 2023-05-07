@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -17,6 +16,11 @@
 #include "RegisteredCustomer.h"
 
 using namespace std;
+
+void exitProgram() {
+
+}
+
 
 int main() {
 	return 0;

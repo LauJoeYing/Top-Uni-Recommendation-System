@@ -9,6 +9,9 @@
 #include <ctime>
 
 #include "SavedFavourite.h"
+#include "Admin.h"
+#include "Guest.h"
+#include "RegisteredCustomer.h"
 
 using namespace std;
 

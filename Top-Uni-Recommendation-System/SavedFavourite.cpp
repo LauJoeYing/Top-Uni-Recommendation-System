@@ -62,6 +62,9 @@ void SavedFavourite::insertFavourite(std::string userId, std::string userFavRank
     }
 }
 
+Favourite* SavedFavourite::getFavouriteHead() {
+    return favouriteHead;
+}
 
 void SavedFavourite::writeFavourite() {
     ofstream file;
