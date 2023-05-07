@@ -98,7 +98,7 @@ void chngPassword(User* slctUser) {
 void chngEmail(User* slctUser) {
     string newEmail;
     cout << "\nThis is Change Email Address Page\n";
-    cout << "Old Email Address\t:\t" << slctUser->email<<"\n";
+    cout << "Old Email Address\t:\t" << slctUser->email << "\n";
     cout << "New Email Address\t:\t";
     cin >> newEmail;
     slctUser->email = newEmail;
@@ -154,12 +154,12 @@ User* profile(User* userHead) {
     int adminType;
     string checkId;
     User* current = userHead;
-    cout << "\nPlease Select Customer ID:\t";
+    cout << "\nPlease Select Customer ID\t:\t";
     cin >> checkId;
     while (current) {
         if (current->userId == checkId) {
             cout << "\n";
-            cout << "\n==================================================\n";
+            cout << "\n================ USER PROFILE ==================\n";
             cout << "| Username \t\t|\t" << current->username << "\n";
             cout << "| Real Name\t\t|\t" << current->name << "\n";
             cout << "| Email Address\t\t|\t" << current->email << "\n";
@@ -188,11 +188,14 @@ User* profile(User* userHead) {
 
 void showAccount(User* userHead) {
     cout << "\n";
+    cout << "User ID\t|\tName\t|\tLast Login Date\n";
+    cout << "---------------------------------------\n";
     while (userHead != NULL)
     {
-        cout << userHead->userId << "\t" << userHead->name << "\n";
+        cout << userHead->userId << "\t|\t" << userHead->name << "\t|\t"  << userHead->lastLoginDate << "\n";
         userHead = userHead->nextNode;
     }
+    cout << "---------------------------------------\n";
 }
 string getCurrentDateString() {
     auto t = time(nullptr);
@@ -235,13 +238,11 @@ bool checkDate(User* userHead) {
         }
 
         //IF ELSE STATEMENT to check active inactive
-        if (stoi(currentYear) - stoi(dateArray[2]) >= 0) {
-            if (stoi(currentMonth) - stoi(dateArray[1]) > 2) {
-                return true;
-            }
-            else {
-                return false;
-            }
+        if (stoi(currentMonth) - stoi(dateArray[1]) > 3) {
+            return true;
+        }
+        else if (stoi(currentYear) - stoi(dateArray[2]) > 0) {
+            return true;
         }
         else {
             return false;
@@ -252,25 +253,151 @@ bool checkDate(User* userHead) {
     }
 }
 
-//havent done witht eh delete inactive function
-void dltInactive(User* userHead) {
-
-}
-
 void showInactive(User* userHead) {
+    cout << userHead->userId;
     cout << "This is Show Inactive User Account Page\n\n";
+    cout << "User ID\t|\tName\t\t\t|\tLast Login Date\n";
+    cout << "------------------------------------------------------------------\n";
     while (userHead != NULL)
     {
         bool status = checkDate(userHead);
         if (status) {
-            cout << userHead->lastLoginDate << "\t" << userHead->name << "\n";
+            cout << userHead->userId << "\t|\t" << userHead->name << "\t\t|\t" << userHead->lastLoginDate << "\n";
             userHead = userHead->nextNode;
         }
         else {
             userHead = userHead->nextNode;
         }
     }
-    dltInactive(userHead);
+    cout << "------------------------------------------------------------------\n";
+}
+
+static void display(User* head)
+{
+    if (head == NULL)
+    {
+        cout << "NULL" << endl;
+    }
+    else
+    {
+        cout << head->userId << endl;
+    }
+}
+
+//havent done witht eh delete inactive function
+void dltSelect(User* userHead) {
+    string dltType;
+    string adminType;
+    User* current = userHead;
+    cout << "\nThis is delete selected inactive user page\n";
+    cout << "\nEnter the Inactive User ID\t:\t";
+    cin >> dltType;
+
+    while (current) {
+        if (current->userId == dltType) {
+            cout << "\n";
+            cout << "\n================ USER PROFILE ==================\n";
+            cout << "| Username \t\t|\t" << current->username << "\n";
+            cout << "| Real Name\t\t|\t" << current->name << "\n";
+            cout << "| Email Address\t\t|\t" << current->email << "\n";
+            cout << "| Phone Number\t\t|\t" << current->phoneNumber << "\n";
+            cout << "| Last Login Date\t\t|\t" << current->lastLoginDate << "\n";
+            cout << "==================================================\n";
+            cout << "\nAre you sure you want to delete this user? [Yes/No]\t";
+            cin >> adminType;
+            if (adminType == "Yes") {
+                User* check = userHead;
+
+                cout << check->userId << "\n\n";
+                display(check);
+                cout << "\n\n";
+                cout << "Run before here\n\n";
+                if (check->prevNode == NULL) {
+                    User* temp;
+                    temp = check->nextNode;
+                    cout << temp;
+                    delete check;
+                    delete temp;
+                    cout << "\n\n";
+                }
+                else {
+                    User* temp = check->prevNode;
+                    temp->nextNode = check->nextNode;
+                    delete check;
+                    delete temp;
+                    cout << "\n\n";
+                }
+                cout << "Run until here\n\n";
+                //cout << temp->userId << "\n\n";
+                cout << "Run end\n\n";
+                //temp->nextNode = current->nextNode;
+
+                cout << "\nYou have deleted\t:" << current->userId << "\t" << current->name << "\n\n";
+                //showInactive(current);
+                break;
+            }
+        }
+        current = current->nextNode;
+    }
+}
+
+
+void dltAll(User* userHead) {
+    cout << "This is delete all inactive user page\n\n";
+    while (userHead != NULL)
+    {
+        bool status = checkDate(userHead);
+        if (status) {
+
+            //temp = userHead->prevNode;
+            //temp->nextNode = userHead->nextNode;
+            cout << userHead->userId << "\t|\t" << userHead->name << "\t\t|\t" << userHead->lastLoginDate << "\n Deleted";
+            userHead = userHead->nextNode;
+        }
+        else {
+            userHead = userHead->nextNode;
+        }
+    }
+}
+
+void dltChoice(User* slctUser, int choice) {
+    switch (choice) {
+    case 1: //delete selected inactive user
+        dltSelect(slctUser);
+        break;
+
+    case 2: //delete all inactive user
+        dltAll(slctUser);
+        break;
+
+    case 3: //return to previous page
+        cout << endl << "Will return to Previous Page" << endl << endl;
+        break;
+
+    default:
+        cout << endl << "Please Try Again." << endl << endl;
+        break;
+    }
+}
+
+
+
+void mngDlt(User* userHead) {
+    int adminType;
+    while (true) {
+        showInactive(userHead);
+        cout << "\n===== Delete Inactive User Menu =====\t\n\n";
+        cout << "[ 1 ] - Select Inactive User\n";
+        cout << "[ 2 ] - Delete All\n";
+        cout << "[ 3 ] - Back\n\n";
+        cout << "Please Select Your Option:\t";
+        cin >> adminType;
+
+        dltChoice(userHead, adminType);
+        if (adminType == 3) {
+            break;
+        }
+    }
 }
 
 void mdfyAccount(User* userHead) {
@@ -295,7 +422,7 @@ void mngChoice(User* userHead, int choice) {
         break;
 
     case 3: //show Inactive User Account
-        showInactive(userHead);
+        mngDlt(userHead);
         break;
 
     case 4: //return to MoHE Admin main page

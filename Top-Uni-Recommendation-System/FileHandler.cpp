@@ -19,7 +19,7 @@ void readUserData(User*& userHead) {
 
     //Case 1: File is not accessible
     if (!file) {
-        cerr << "Error: File Cannot Be Opened!" << fileName << endl;
+        cerr << "Error: File Cannot Be Opened! " << fileName << endl;
         return;
     }
 
@@ -28,7 +28,7 @@ void readUserData(User*& userHead) {
     string line;
     while (getline(file, line)) {
         stringstream ss(line);
-        string userId, username, password, name, email, phoneNumber, gender, lastActive;
+        string userId, username, password, name, email, phoneNumber, gender, lastLoginDate;
 
         if (getline(ss, userId, ',') &&
             getline(ss, username, ',') &&
@@ -36,11 +36,11 @@ void readUserData(User*& userHead) {
             getline(ss, name, ',') &&
             getline(ss, email, ',') &&
             getline(ss, phoneNumber, ',') &&
-            getline(ss, gender,',') &&
-            getline(ss, lastActive)) {
+            getline(ss, gender, ',') &&
+            getline(ss, lastLoginDate)) {
 
             //Create new User object and add it to singly linked list
-            User* newUser = new User{ userId, username, password, name, email, phoneNumber, gender, lastActive };
+            User* newUser = new User{ userId, username, password, name, email, phoneNumber, gender, lastLoginDate };
 
             if (userHead == nullptr) {
                 userHead = newUser;

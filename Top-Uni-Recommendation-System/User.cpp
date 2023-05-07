@@ -19,6 +19,19 @@ void display(struct User* userHead)
     }
 }
 
+string endProgram() {
+    system("cls");
+    cout << "System Terminating..." << endl;
+    Sleep(1000);
+    cout << "....." << endl;
+    Sleep(1000);
+    cout << "..." << endl;
+    Sleep(1000);
+    cout << "." << endl;
+    Sleep(1000);
+    cout << "---Goodbye!---" << endl;
+    return nullptr;
+}
 User* login(User* userHead) {
 
     string username, password;
@@ -38,40 +51,32 @@ User* login(User* userHead) {
         cin >> userType;
 
         if (userType == 4) {
-            system("cls");
-            cout << "System Terminating..." << endl;
-            Sleep(1000);
-            cout << "....." << endl;
-            Sleep(1000);
-            cout << "..." << endl;
-            Sleep(1000);
-            cout << "." << endl;
-            Sleep(1000);
-            cout << "---Goodbye!---" << endl;
-            return nullptr; // User chooses to exit the program instantly
+            endProgram();
+            //return nullptr; // User chooses to exit the program instantly
         }
+        else {
 
-        cout << "Please Enter Your Username:\t";
-        cin >> username;
-        cout << "Please Enter Your Password:\t";
-        cin >> password;
+            cout << "Please Enter Your Username:\t";
+            cin >> username;
+            cout << "Please Enter Your Password:\t";
+            cin >> password;
 
-        // Transverse singly linked list and check user credentials
-        User* current = userHead;
-        while (current) {
-            if (current->username == username && current->password == password) {
-                cout << "Login successful!" << endl;
-                displayMenu(userHead, current);
-                return current; // Return pointer to user object
+            // Transverse singly linked list and check user credentials
+            User* current = userHead;
+            while (current) {
+                if (current->username == username && current->password == password) {
+                    cout << "Login successful!" << endl;
+                    displayMenu(userHead, current);
+                    return current; // Return pointer to user object
+                }
+                current = current->nextNode;
             }
-            current = current->nextNode;
+
+            // If user not found or credentials don't match, return nullptr
+            cout << "Invalid username or password. Please try again." << endl;
         }
 
-        // If user not found or credentials don't match, return nullptr
-        cout << "Invalid username or password. Please try again." << endl;
-      
-
-    }   
+    }
 
 }
 
@@ -85,7 +90,6 @@ void displayMenu(User* userHead, User* current) {
     switch (userType) {
 
     case 1: // Guest Menu
-
         cout << "\n\n===== User Type: Guest  =====\t\n\n";
         cout << "[ 1 ] - Sort University in Order\n";
         cout << "[ 2 ] - Search University Details\n";
@@ -105,6 +109,10 @@ void displayMenu(User* userHead, User* current) {
 
     case 3:
         adminMenu(userHead, current);
+        break;
+
+    default:
+        cout << endl << "Please Try Again." << endl << endl;
         break;
     }
 }
