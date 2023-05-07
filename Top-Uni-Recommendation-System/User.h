@@ -8,6 +8,8 @@
 #include <iomanip>
 #include <ctime>
 
+#include "SavedFavourite.h"
+
 using namespace std;
 
 struct CurrentUser {    //Just to be safe CurrentUser use "extern"
@@ -40,7 +42,7 @@ private:
 
 public:
     CurrentUser currentUser; //Define the currentUser like this User():currentUser{"U0001", "john".....}{} or ("U0001", "john".....){}   More convenient if this is public, but tak tahu if it will work.
-    CurrentUser getCurrentUser(); //Shouldnt need this unless CurrentUser is in Private
+    //CurrentUser getCurrentUser(); //Shouldnt need this unless CurrentUser is in Private
     UserList* getUserHead();
     //constructor
     User();

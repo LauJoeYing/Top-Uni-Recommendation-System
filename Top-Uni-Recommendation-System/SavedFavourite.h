@@ -7,8 +7,12 @@
 #include <chrono>
 #include <iomanip>
 
+#include "University.h"
+#include "User.h"
 
 using namespace std;
+
+CurrentUser currentUser;
 
 struct Favourite {
 	string userId;
@@ -24,12 +28,15 @@ private:
 	int arrLength;
 
 public:
+	//void getCurrentUser();
+
 	SavedFavourite();
 	~SavedFavourite();
 
 	//File IO
 	void importFavourite();
-	void insertFavourite();
+	void insertFavourite(string, string, string);
+	void writeFavourite();
 
 	//Calc current user fav record length
 	void getLength(); //In function, arrLength = while(!NULL||0){int cnt++;}
@@ -51,5 +58,5 @@ public:
 	void printSelectedFavourite(); //Prints the single row of selected Uni using Univerisity struct
 
 	//Append New Favourite
-	void isFavourited(); //Adds to favourite, append userPRefRankArr array, and make counter
+	void isFavourited(int rankNumber); //Adds to favourite, append userPRefRankArr array, and make counter
 };
