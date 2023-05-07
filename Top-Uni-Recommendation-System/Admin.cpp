@@ -262,7 +262,7 @@ void showInactive(User* userHead) {
     {
         bool status = checkDate(userHead);
         if (status) {
-            cout << userHead->userId << "\t|\t" << userHead->name << "\t\t|\t" << userHead->lastLoginDate << "\n";
+            cout << userHead->userId << "\t|\t" << userHead->name << "\t\t|\t" << userHead->lastLoginDate << "\n" << endl;
             userHead = userHead->nextNode;
         }
         else {
@@ -327,18 +327,18 @@ void dltSelect(User* userHead) {
                     delete temp;
                     cout << "\n\n";
                 }
-                cout << "Run until here\n\n";
                 //cout << temp->userId << "\n\n";
-                cout << "Run end\n\n";
                 //temp->nextNode = current->nextNode;
-
                 cout << "\nYou have deleted\t:" << current->userId << "\t" << current->name << "\n\n";
+                cin.clear();
+                cin.ignore(10000, '\n');
                 //showInactive(current);
                 break;
             }
         }
         current = current->nextNode;
     }
+    return;
 }
 
 
@@ -363,11 +363,11 @@ void dltAll(User* userHead) {
 void dltChoice(User* slctUser, int choice) {
     switch (choice) {
     case 1: //delete selected inactive user
-        dltSelect(slctUser);
+        return dltSelect(slctUser);
         break;
 
     case 2: //delete all inactive user
-        dltAll(slctUser);
+        return dltAll(slctUser);
         break;
 
     case 3: //return to previous page
@@ -378,6 +378,7 @@ void dltChoice(User* slctUser, int choice) {
         cout << endl << "Please Try Again." << endl << endl;
         break;
     }
+    return;
 }
 
 
@@ -393,10 +394,7 @@ void mngDlt(User* userHead) {
         cout << "Please Select Your Option:\t";
         cin >> adminType;
 
-        dltChoice(userHead, adminType);
-        if (adminType == 3) {
-            break;
-        }
+        return dltChoice(userHead, adminType);
     }
 }
 
@@ -414,15 +412,15 @@ void mdfyAccount(User* userHead) {
 void mngChoice(User* userHead, int choice) {
     switch (choice) {
     case 1: //search User Account
-        srchAccount(userHead);
+        return srchAccount(userHead);
         break;
 
     case 2: //modify User Account
-        mdfyAccount(userHead);
+        return mdfyAccount(userHead);
         break;
 
     case 3: //show Inactive User Account
-        mngDlt(userHead);
+        return mngDlt(userHead);
         break;
 
     case 4: //return to MoHE Admin main page
@@ -433,6 +431,7 @@ void mngChoice(User* userHead, int choice) {
         cout << endl << "Please Try Again." << endl << endl;
         break;
     }
+    return;
 
 }
 
@@ -450,9 +449,7 @@ void mngAct(User* userHead) {
         cin >> adminType;
 
         mngChoice(userHead, adminType);
-        if (adminType == 4) {
-            break;
-        }
+        return;
     }
 }
 
@@ -507,9 +504,7 @@ void sumTop() {
         cin >> adminType;
 
         sumChoice(adminType);
-        if (adminType == 4) {
-            break;
-        }
+        return;
     }
 }
 
@@ -549,8 +544,5 @@ void adminMenu(User* userHead, User* current) {
         cin >> adminType;
 
         adminChoice(userHead, adminType);
-        if (adminType == 4) {
-            break;
-        }
     }
 }
