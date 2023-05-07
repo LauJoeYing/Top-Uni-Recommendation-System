@@ -18,7 +18,7 @@ using namespace std;
 
 //Only UI functions
 
-class RegisteredUser {
+class RegisteredCustomer {
 private:
 	//??? MinOn please fill in the functions
 

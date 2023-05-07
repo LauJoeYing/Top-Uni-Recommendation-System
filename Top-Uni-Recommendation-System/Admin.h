@@ -17,7 +17,7 @@ using namespace std;
 
 //Only UI functions
 
-class Guest {
+class Admin {
 private:
 	void modifyUsername();
 	void modifyPassword();

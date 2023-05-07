@@ -14,7 +14,7 @@
 #include "HashTable.h"
 #include "Admin.h"
 #include "Guest.h"
-#include "RegisteredUser.h"
+#include "RegisteredCustomer.h"
 
 using namespace std;
 
