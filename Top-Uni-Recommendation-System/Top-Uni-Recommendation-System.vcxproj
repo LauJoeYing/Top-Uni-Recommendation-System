@@ -19,9 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source5.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SavedFavourite.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="Feedback.h" />
     <ClInclude Include="Admin.h" />
@@ -29,6 +30,9 @@
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="Guest.h" />
     <ClInclude Include="University.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DontReadMe.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
