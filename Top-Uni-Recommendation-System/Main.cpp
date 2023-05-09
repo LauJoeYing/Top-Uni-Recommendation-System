@@ -6,14 +6,14 @@
 #include <iomanip>
 #include <ctime>
 
-#include "User.h"
-#include "University.h"
-#include "Feedback.h"
-#include "SavedFavourite.h"
-#include "HashTable.h"
+//#include "User.h"
+//#include "University.h"
+//#include "Feedback.h"
+//#include "SavedFavourite.h"
+//#include "HashTable.h"
 #include "Admin.h"
-#include "Guest.h"
-#include "RegisteredCustomer.h"
+//#include "Guest.h"
+//#include "RegisteredCustomer.h"
 
 using namespace std;
 
@@ -23,5 +23,11 @@ void exitProgram() {
 
 
 int main() {
-	return 0;
+	/*cout << "Start" << endl << endl;
+	Admin admin;
+    UserList* userHead = nullptr;
+	admin.readUserData(userHead);
+	admin.login(userHead);
+	cout << "Return" << endl << endl;
+	return 0;*/
 }

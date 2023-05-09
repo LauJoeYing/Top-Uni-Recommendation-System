@@ -20,24 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="HashTable.cpp" />
-    <ClCompile Include="Feedback.cpp" />
-    <ClCompile Include="Guest.cpp" />
-    <ClCompile Include="University.cpp" />
-    <ClCompile Include="RegisteredCustomer.cpp" />
-    <ClCompile Include="User.cpp" />
-    <ClCompile Include="SavedFavourite.cpp" />
     <ClCompile Include="Admin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SavedFavourite.h" />
-    <ClInclude Include="User.h" />
-    <ClInclude Include="Feedback.h" />
     <ClInclude Include="Admin.h" />
-    <ClInclude Include="RegisteredCustomer.h" />
-    <ClInclude Include="HashTable.h" />
-    <ClInclude Include="Guest.h" />
-    <ClInclude Include="University.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="DontReadMe.txt" />
