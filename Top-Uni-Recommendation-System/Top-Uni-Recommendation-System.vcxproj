@@ -62,6 +62,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="University.h" />
+    <ClCompile Include="Admin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Admin.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="DontReadMe.txt" />
