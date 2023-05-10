@@ -6,13 +6,13 @@
 #include <iomanip>
 #include <ctime>
 
-#include "User.h"
+//#include "User.h"
 #include "University.h"
-#include "Feedback.h"
-#include "SavedFavourite.h"
-#include "HashTable.h"
-#include "Admin.h"
-#include "Guest.h"
+//#include "Feedback.h"
+//#include "SavedFavourite.h"
+//#include "HashTable.h"
+//#include "Admin.h"
+//#include "Guest.h"
 #include "RegisteredCustomer.h"
 
 using namespace std;
@@ -23,5 +23,6 @@ void exitProgram() {
 
 
 int main() {
+	/*showRegisteredCustomerMenu();*/
 	return 0;
 }
