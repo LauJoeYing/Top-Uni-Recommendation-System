@@ -6,67 +6,69 @@
 
 Admin admin;
 
-void readUserData(UserList*& userHead) {
+//these part is put under User file for read and write user data
 
-    const string fileName = "User.csv";
-
-    ifstream file(fileName);
-    //Case 1: File is not accessible
-    if (!file) {
-        cerr << "Error: File Cannot Be Opened! " << fileName << endl;
-        return;
-    }
-
-    //Case 2: File is accessible
-    //Read data line by line from user.csv and create User objects
-    string line;
-    while (getline(file, line)) {
-        stringstream ss(line);
-        string userId, username, password, name, email, phoneNumber, gender, lastLoginDate;
-
-        if (getline(ss, userId, ',') &&
-            getline(ss, username, ',') &&
-            getline(ss, password, ',') &&
-            getline(ss, name, ',') &&
-            getline(ss, email, ',') &&
-            getline(ss, phoneNumber, ',') &&
-            getline(ss, gender, ',') &&
-            getline(ss, lastLoginDate)) {
-
-            //Create new User object and add it to singly linked list
-            UserList* newUser = new UserList{ userId, username, password, name, email, phoneNumber, gender, lastLoginDate };
-
-            if (userHead == nullptr) {
-                userHead = newUser;
-                cout << "Made it here" << endl;
-            }
-
-            else {
-                UserList* current = userHead;
-
-                while (current->nextNode != nullptr) {
-                    current = current->nextNode;
-                }
-
-                current->nextNode = newUser;
-            }
-        }
-    }
-
-    //Close the file
-    file.close();
-}
-
-void writeUserFile(UserList* userHead) {
-    ofstream file;
-    file.open("User.csv");
-    UserList* temp = userHead;
-    while (temp != NULL) {
-        file << temp->userId << "," << temp->username << "," << temp->password << "," << temp->name << "," << temp->email << "," << temp->phoneNumber << "," << temp->gender << "," << temp->lastLoginDate << endl;
-        temp = temp->nextNode;
-    }
-    file.close();
-}
+//void readUserData(UserList*& userHead) {
+//
+//    const string fileName = "User.csv";
+//
+//    ifstream file(fileName);
+//    //Case 1: File is not accessible
+//    if (!file) {
+//        cerr << "Error: File Cannot Be Opened! " << fileName << endl;
+//        return;
+//    }
+//
+//    //Case 2: File is accessible
+//    //Read data line by line from user.csv and create User objects
+//    string line;
+//    while (getline(file, line)) {
+//        stringstream ss(line);
+//        string userId, username, password, name, email, phoneNumber, gender, lastLoginDate;
+//
+//        if (getline(ss, userId, ',') &&
+//            getline(ss, username, ',') &&
+//            getline(ss, password, ',') &&
+//            getline(ss, name, ',') &&
+//            getline(ss, email, ',') &&
+//            getline(ss, phoneNumber, ',') &&
+//            getline(ss, gender, ',') &&
+//            getline(ss, lastLoginDate)) {
+//
+//            //Create new User object and add it to singly linked list
+//            UserList* newUser = new UserList{ userId, username, password, name, email, phoneNumber, gender, lastLoginDate };
+//
+//            if (userHead == nullptr) {
+//                userHead = newUser;
+//                cout << "Made it here" << endl;
+//            }
+//
+//            else {
+//                UserList* current = userHead;
+//
+//                while (current->nextNode != nullptr) {
+//                    current = current->nextNode;
+//                }
+//
+//                current->nextNode = newUser;
+//            }
+//        }
+//    }
+//
+//    //Close the file
+//    file.close();
+//}
+//
+//void writeUserFile(UserList* userHead) {
+//    ofstream file;
+//    file.open("User.csv");
+//    UserList* temp = userHead;
+//    while (temp != NULL) {
+//        file << temp->userId << "," << temp->username << "," << temp->password << "," << temp->name << "," << temp->email << "," << temp->phoneNumber << "," << temp->gender << "," << temp->lastLoginDate << endl;
+//        temp = temp->nextNode;
+//    }
+//    file.close();
+//}
 
 void modifyName(UserList* selectUser) {
     string newName;
@@ -554,69 +556,71 @@ void Admin::showAdminMenu(UserList* userHead) {
 
 };
 
-void showMenu(UserList* userHead, int userType) {
-    switch (userType) {
-    case 1:
-        cout << "Hello";
-        break;
-    case 2:
-        showRegisteredCustomerMenu();
-        break;
-    case 3:
-        admin.showAdminMenu(userHead);
-        break;
-    case 4:
-        cout << "Bye";
-        /*readUserData(userHead);*/
-        writeUserFile(userHead);
-        feedback.writeFeedbackFile();
-        break;
-        return;
-    default:
-        cout << "Wrong";
-        break;
-    }
-}
+//the commented code here need to put at User file
 
-void Admin::login() {
-
-    UserList* userHead = nullptr;
-    readUserData(userHead);
-    feedback.importFeedbackFile();
-    string username, password;
-    int userType;
-
-    while (true) {
-        cout << "\n+--------------------------------------------+\n";
-        cout << "| *  Top Univeristy Recommendation System  * |\n";
-        cout << "+--------------------------------------------+\n\n";
-
-        cout << "\n\n=====  Login User Type Selection: =====\t\n";
-        cout << "[ 1 ] - Guest\n";
-        cout << "[ 2 ] - Registered Customer\n";
-        cout << "[ 3 ] - MoHE Admin\n";
-        cout << "[ 4 ] - Exit the Program\n\n";
-        cout << "Please Enter Your User Type:\t";
-        cin >> userType;
-
-        cout << "Please Enter Your Username:\t" << endl;
-        cin >> username;
-        cout << "Please Enter Your Password:\t" << endl;
-        cin >> password;
-
-        while (userHead != NULL) {
-            if (userHead->username == username && userHead->password == password) {
-                cout << "Login successful!" << endl;
-                showMenu(userHead, userType);
-                // Return pointer to user object
-
-            }
-            userHead = userHead->nextNode;
-        }
-
-        // If user not found or credentials don't match, return nullptr
-        cout << "Invalid username or password. Please try again." << endl;
-
-        }
-}
+//void showMenu(UserList* userHead, int userType) {
+//    switch (userType) {
+//    case 1:
+//        cout << "Hello";
+//        break;
+//    case 2:
+//        showRegisteredCustomerMenu();
+//        break;
+//    case 3:
+//        admin.showAdminMenu(userHead);
+//        break;
+//    case 4:
+//        cout << "Bye";
+//        /*readUserData(userHead);*/
+//        writeUserFile(userHead);
+//        feedback.writeFeedbackFile();
+//        break;
+//        return;
+//    default:
+//        cout << "Wrong";
+//        break;
+//    }
+//}
+//
+//void Admin::login() {
+//
+//    UserList* userHead = nullptr;
+//    readUserData(userHead);
+//    feedback.importFeedbackFile();
+//    string username, password;
+//    int userType;
+//
+//    while (true) {
+//        cout << "\n+--------------------------------------------+\n";
+//        cout << "| *  Top Univeristy Recommendation System  * |\n";
+//        cout << "+--------------------------------------------+\n\n";
+//
+//        cout << "\n\n=====  Login User Type Selection: =====\t\n";
+//        cout << "[ 1 ] - Guest\n";
+//        cout << "[ 2 ] - Registered Customer\n";
+//        cout << "[ 3 ] - MoHE Admin\n";
+//        cout << "[ 4 ] - Exit the Program\n\n";
+//        cout << "Please Enter Your User Type:\t";
+//        cin >> userType;
+//
+//        cout << "Please Enter Your Username:\t" << endl;
+//        cin >> username;
+//        cout << "Please Enter Your Password:\t" << endl;
+//        cin >> password;
+//
+//        while (userHead != NULL) {
+//            if (userHead->username == username && userHead->password == password) {
+//                cout << "Login successful!" << endl;
+//                showMenu(userHead, userType);
+//                // Return pointer to user object
+//
+//            }
+//            userHead = userHead->nextNode;
+//        }
+//
+//        // If user not found or credentials don't match, return nullptr
+//        cout << "Invalid username or password. Please try again." << endl;
+//
+//        }
+//}
 
