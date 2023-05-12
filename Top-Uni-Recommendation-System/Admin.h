@@ -10,7 +10,7 @@
 
 //#include "User.h"
 //#include "University.h"
-//#include "Feedback.h"
+#include "Feedback.h"
 //#include "SavedFavourite.h"
 
 using namespace std;
@@ -44,9 +44,9 @@ class Admin {
 private:
 
 public:
+	void login();
 	void showAdminMenu(UserList* userHead);
-	void readUserData(UserList*& userHead);
-	UserList* login(UserList* userHead);
+	//void readUserData(UserList*& userHead);
 	void modifyRegisteredCustomerDetail(UserList* userHead);
 	void deleteRegisteredCustomerAccount(UserList* userHead, string deleteUser);
 	//Other methods, such as inactive validation

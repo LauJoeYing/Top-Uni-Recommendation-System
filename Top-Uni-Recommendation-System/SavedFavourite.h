@@ -8,12 +8,21 @@
 #include <iomanip>
 
 #include "University.h"
-#include "User.h"
+//#include "User.h"
 
 using namespace std;
 
-CurrentUser currentUser;
-
+//CurrentUser currentUser;
+//struct CurrentUser {    //Just to be safe CurrentUser use "extern"
+//	string userId;
+//	string username;
+//	string password;
+//	string name;
+//	string email;
+//	string phoneNumber;
+//	string gender;
+//	string lastLoginDate;
+//};
 struct Favourite {
 	string userId;
 	int userFavRankArr[10];  //Assume maximum of 10 favourite Uni each user, or else I will die

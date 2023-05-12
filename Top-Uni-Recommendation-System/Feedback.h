@@ -8,6 +8,9 @@
 #include <iomanip>
 #include <ctime>
 
+//#include "User.h"
+//#include "SavedFavourite.h"
+
 using namespace std;
 
 struct FeedbackList {
@@ -34,8 +37,8 @@ class Feedback {
     
     public :
         //constructor
-        Feedback();
-        ~Feedback();
+        //Feedback();
+        //~Feedback();
 
         //File I/O
         void insertFeedback(string feedbackID, string userName, string adminName, string subject, string feedbackMessage, string replyMessage, string date); //Change to singly linked list insert
@@ -43,7 +46,7 @@ class Feedback {
         void writeFeedbackFile();
 
         //Admin
-        void adminReplyFeedback(Feedback* temp);
+        int adminReplyFeedback(FeedbackList* temp);
         void adminViewFeedbackList();
 
         //User

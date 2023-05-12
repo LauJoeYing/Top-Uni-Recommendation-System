@@ -1,56 +1,72 @@
 #include "Admin.h"
+#include "University.h"
+#include "RegisteredCustomer.h"
+
 #pragma warning(disable : 4996) //_CRT_SECURE_NO_WARNINGS
 
-//void Admin::readUserData(UserList*& userHead) {
-//
-//    const string fileName = "User.csv";
-//
-//    ifstream file(fileName);
-//    //Case 1: File is not accessible
-//    if (!file) {
-//        cerr << "Error: File Cannot Be Opened! " << fileName << endl;
-//        return;
-//    }
-//
-//    //Case 2: File is accessible
-//    //Read data line by line from user.csv and create User objects
-//    string line;
-//    while (getline(file, line)) {
-//        stringstream ss(line);
-//        string userId, username, password, name, email, phoneNumber, gender, lastLoginDate;
-//
-//        if (getline(ss, userId, ',') &&
-//            getline(ss, username, ',') &&
-//            getline(ss, password, ',') &&
-//            getline(ss, name, ',') &&
-//            getline(ss, email, ',') &&
-//            getline(ss, phoneNumber, ',') &&
-//            getline(ss, gender, ',') &&
-//            getline(ss, lastLoginDate)) {
-//
-//            //Create new User object and add it to singly linked list
-//            UserList* newUser = new UserList{ userId, username, password, name, email, phoneNumber, gender, lastLoginDate };
-//
-//            if (userHead == nullptr) {
-//                userHead = newUser;
-//                cout << "Made it here" << endl;
-//            }
-//
-//            else {
-//                UserList* current = userHead;
-//
-//                while (current->nextNode != nullptr) {
-//                    current = current->nextNode;
-//                }
-//
-//                current->nextNode = newUser;
-//            }
-//        }
-//    }
-//
-//    //Close the file
-//    file.close();
-//}
+Admin admin;
+
+void readUserData(UserList*& userHead) {
+
+    const string fileName = "User.csv";
+
+    ifstream file(fileName);
+    //Case 1: File is not accessible
+    if (!file) {
+        cerr << "Error: File Cannot Be Opened! " << fileName << endl;
+        return;
+    }
+
+    //Case 2: File is accessible
+    //Read data line by line from user.csv and create User objects
+    string line;
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string userId, username, password, name, email, phoneNumber, gender, lastLoginDate;
+
+        if (getline(ss, userId, ',') &&
+            getline(ss, username, ',') &&
+            getline(ss, password, ',') &&
+            getline(ss, name, ',') &&
+            getline(ss, email, ',') &&
+            getline(ss, phoneNumber, ',') &&
+            getline(ss, gender, ',') &&
+            getline(ss, lastLoginDate)) {
+
+            //Create new User object and add it to singly linked list
+            UserList* newUser = new UserList{ userId, username, password, name, email, phoneNumber, gender, lastLoginDate };
+
+            if (userHead == nullptr) {
+                userHead = newUser;
+                cout << "Made it here" << endl;
+            }
+
+            else {
+                UserList* current = userHead;
+
+                while (current->nextNode != nullptr) {
+                    current = current->nextNode;
+                }
+
+                current->nextNode = newUser;
+            }
+        }
+    }
+
+    //Close the file
+    file.close();
+}
+
+void writeUserFile(UserList* userHead) {
+    ofstream file;
+    file.open("User.csv");
+    UserList* temp = userHead;
+    while (temp != NULL) {
+        file << temp->userId << "," << temp->username << "," << temp->password << "," << temp->name << "," << temp->email << "," << temp->phoneNumber << "," << temp->gender << "," << temp->lastLoginDate << endl;
+        temp = temp->nextNode;
+    }
+    file.close();
+}
 
 void modifyName(UserList* selectUser) {
     string newName;
@@ -193,7 +209,7 @@ void showModifyMenu(UserList* selectUser) {
             cout << "|" << setw(20) << left << "Real Name" << "|" << setw(30) << left << current->name << "|" << endl;
             cout << "|" << setw(20) << left << "Email Address" << "|" << setw(30) << left << current->email << "|" << endl;
             cout << "|" << setw(20) << left << "Phone Number" << "|" << setw(30) << left << current->phoneNumber << "|" << endl;
-            cout << "|" << setw(20) << left << "Phone Number" << "|" << setw(30) << left << current->gender << "|" << endl;
+            cout << "|" << setw(20) << left << "Gender" << "|" << setw(30) << left << current->gender << "|" << endl;
             cout << "=====================================================" << endl;
             cout << endl << "===== Modify Menu =====" << endl;
             cout << "[ 1 ] - Name" << endl;
@@ -278,18 +294,35 @@ bool checkDate(UserList* userHead) {
 void Admin::deleteRegisteredCustomerAccount(UserList* userHead, string deleteUser) {
     UserList* temp = userHead;
     UserList* prev = nullptr;
+
+    string choice;
+
     while (temp != nullptr) {
         if (temp->userId == deleteUser) {
-            if (prev == nullptr) {
-                userHead = temp->nextNode;
+            cout << endl << "================== USER PROFILE =====================" << endl;
+            cout << "|" << setw(20) << left << "Username" << "|" << setw(30) << left << temp->username << "|" << endl;
+            cout << "|" << setw(20) << left << "Real Name" << "|" << setw(30) << left << temp->name << "|" << endl;
+            cout << "|" << setw(20) << left << "Email Address" << "|" << setw(30) << left << temp->email << "|" << endl;
+            cout << "|" << setw(20) << left << "Phone Number" << "|" << setw(30) << left << temp->phoneNumber << "|" << endl;
+            cout << "|" << setw(20) << left << "Gender" << "|" << setw(30) << left << temp->gender << "|" << endl;
+            cout << "=====================================================" << endl;
+            cout << "Are you sure you want to delete this account?[Yes/No] : " << endl;
+
+            cin >> choice;
+            if (choice == "Yes") {
+                if (prev == nullptr) {
+                    userHead = temp->nextNode;
+                }
+                else {
+                    prev->nextNode = temp->nextNode;
+                }
+                cout << temp->name << " (Registered Customer) has been deleted from the system." << endl;
+                delete temp;
+                break;
             }
             else {
-                prev->nextNode = temp->nextNode;
+                return;
             }
-            cout << temp->name << " (Registered Customer) has been deleted from the system." << endl;
-            delete temp;
-            break;
-
         }
         prev = temp;
         temp = temp->nextNode;
@@ -333,20 +366,19 @@ void Admin::checkInactiveUser(UserList* userHead) {
 bool manageMenuLoop = true;
 
 void manageChoice(UserList* userHead, int choice) {
-    Admin admin;
     switch (choice) {
     case 1: //search customer
-        cout << "This is the Search User Account Page." << choice << endl << endl;
+        cout << "This is the Search User Account Page." << endl << endl;
 
         break;
 
     case 2: //modify customer details
-        cout << "This is the Modify User Account Page." << choice << endl << endl;
+        cout << "This is the Modify User Account Page." << endl << endl;
         admin.modifyRegisteredCustomerDetail(userHead);
         break;
 
     case 3: //show and delete inactive customer.
-        cout << "This is the Show Inactive User Account Page." << choice << endl << endl;
+        cout << "This is the Show Inactive User Account Page." << endl << endl;
         admin.checkInactiveUser(userHead);
         break;
 
@@ -381,15 +413,17 @@ void showManageMenu(UserList* userHead) {
 };
 
 bool feedbackMenuLoop = true;
-
+Feedback feedback;
 void feedbackChoice(int choice) {
+
     switch (choice) {
     case 1: //search feedback
-        cout << "This is the Search User Feedback Page." << choice << endl << endl;
+        cout << "This is the Search User Feedback Page." << endl << endl;
+        feedback.adminViewFeedbackList();
         break;
 
     case 2: //modify customer
-        cout << "This is the Modify User Feedback Page." << choice << endl << endl;
+        cout << "This is the Modify User Feedback Page."  << endl << endl;
         break;
 
     case 3:
@@ -402,14 +436,20 @@ void feedbackChoice(int choice) {
     }
     return;
 }
-
+string feedbackID;
+string userName;
+string adminName;
+string subject;
+string feedbackMessage;
+string replyMessage;
+string date;
 void showFeedbackMenu() {
     cout << "This is Manage Feedback Menu." << endl << endl;
     int adminType;
 
     while (feedbackMenuLoop) {
         cout << "\n===== Manage User Feedback Menu =====\t\n\n";
-        cout << "[ 1 ] - Search User Feedback\n";
+        cout << "[ 1 ] - View User Feedback\n";
         cout << "[ 2 ] - Modify User Feedback\n";
         cout << "[ 3 ] - Back\n\n";
         cout << "Please Select Your Option:\t";
@@ -425,15 +465,15 @@ bool topMenuLoop = true;
 void topChoice(int choice) {
     switch (choice) {
     case 1: //search feedback
-        cout << "This is the Show By Country Page." << choice << endl << endl;
+        cout << "This is the Show By Country Page."<< endl << endl;
         break;
 
     case 2: //modify customer
-        cout << "This is the Show By Overall Page." << choice << endl << endl;
+        cout << "This is the Show By Overall Page." << endl << endl;
         break;
 
     case 3:
-        cout << "This is the Show By Most Favourite Page." << choice << endl << endl;
+        cout << "This is the Show By Most Favourite Page." << endl << endl;
         break;
 
     case 4: //return to MoHE Admin main page
@@ -471,17 +511,17 @@ void adminChoice(UserList* userHead, int choice) {
     Admin admin;
     switch (choice) {
     case 1: //search feedback
-        cout << "This is the manage choice: " << choice << endl << endl;
+        cout << "This is the manage choice: " << endl << endl;
         showManageMenu(userHead);
         break;
 
     case 2: //modify customer
-        cout << "This is the feedback choice: " << choice << endl << endl;
+        cout << "This is the feedback choice: " << endl << endl;
         showFeedbackMenu();
         break;
 
     case 3:
-        cout << "This is the top 10 choice: " << choice << endl << endl;
+        cout << "This is the top 10 choice: " << endl << endl;
         showTopMenu();
         break;
 
@@ -499,7 +539,6 @@ void adminChoice(UserList* userHead, int choice) {
 void Admin::showAdminMenu(UserList* userHead) {
     cout << "This is Show Admin Menu." << endl << endl;
     int adminType;
-
     while (adminMenuLoop) {
         cout << "\n===== User Type: MoHE Admin  =====\t\n\n";
         cout << "[ 1 ] - Manage Registered Customer Account\n";
@@ -515,56 +554,69 @@ void Admin::showAdminMenu(UserList* userHead) {
 
 };
 
-//UserList* Admin::login(UserList* userHead) {
-//    //while (userHead != nullptr) {
-//    //    cout << userHead->userId << endl;
-//    //    userHead = userHead->nextNode;
-//    //}
-//
-//    string username, password;
-//    int userType;
-//
-//    while (true) {
-//        cout << "\n+--------------------------------------------+\n";
-//        cout << "| *  Top Univeristy Recommendation System  * |\n";
-//        cout << "+--------------------------------------------+\n\n";
-//
-//        cout << "\n\n=====  Login User Type Selection: =====\t\n";
-//        cout << "[ 1 ] - Guest\n";
-//        cout << "[ 2 ] - Registered Customer\n";
-//        cout << "[ 3 ] - MoHE Admin\n";
-//        cout << "[ 4 ] - Exit the Program\n\n";
-//        cout << "Please Enter Your User Type:\t";
-//        cin >> userType;
-//
-//        if (userType == 4) {
-//            // endProgram();
-//            return nullptr; // User chooses to exit the program instantly
-//        }
-//        else {
-//
-//            cout << "Please Enter Your Username:\t" << endl;
-//            cin >> username;
-//            cout << "Please Enter Your Password:\t" << endl;
-//            cin >> password;
-//
-//            // Transverse singly linked list and check user credentials
-//            UserList* temp = userHead;
-//            while (temp != nullptr) {
-//                if (temp->username == username) {
-//                    cout << "Login successful!" << endl;
-//                    Admin admin;
-//                    admin.showAdminMenu(userHead);
-//                    return temp; // Return pointer to user object
-//                }
-//                temp = temp->nextNode;
-//            }
-//
-//            // If user not found or credentials don't match, return nullptr
-//            cout << "Invalid username or password. Please try again." << endl;
-//        }
-//
-//    }
-//
-//}
+void showMenu(UserList* userHead, int userType) {
+    switch (userType) {
+    case 1:
+        cout << "Hello";
+        break;
+    case 2:
+        showRegisteredCustomerMenu();
+        break;
+    case 3:
+        admin.showAdminMenu(userHead);
+        break;
+    case 4:
+        cout << "Bye";
+        /*readUserData(userHead);*/
+        writeUserFile(userHead);
+        feedback.writeFeedbackFile();
+        break;
+        return;
+    default:
+        cout << "Wrong";
+        break;
+    }
+}
+
+void Admin::login() {
+
+    UserList* userHead = nullptr;
+    readUserData(userHead);
+    feedback.importFeedbackFile();
+    string username, password;
+    int userType;
+
+    while (true) {
+        cout << "\n+--------------------------------------------+\n";
+        cout << "| *  Top Univeristy Recommendation System  * |\n";
+        cout << "+--------------------------------------------+\n\n";
+
+        cout << "\n\n=====  Login User Type Selection: =====\t\n";
+        cout << "[ 1 ] - Guest\n";
+        cout << "[ 2 ] - Registered Customer\n";
+        cout << "[ 3 ] - MoHE Admin\n";
+        cout << "[ 4 ] - Exit the Program\n\n";
+        cout << "Please Enter Your User Type:\t";
+        cin >> userType;
+
+        cout << "Please Enter Your Username:\t" << endl;
+        cin >> username;
+        cout << "Please Enter Your Password:\t" << endl;
+        cin >> password;
+
+        while (userHead != NULL) {
+            if (userHead->username == username && userHead->password == password) {
+                cout << "Login successful!" << endl;
+                showMenu(userHead, userType);
+                // Return pointer to user object
+
+            }
+            userHead = userHead->nextNode;
+        }
+
+        // If user not found or credentials don't match, return nullptr
+        cout << "Invalid username or password. Please try again." << endl;
+
+        }
+}
 

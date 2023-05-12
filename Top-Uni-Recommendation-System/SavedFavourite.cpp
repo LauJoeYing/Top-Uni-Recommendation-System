@@ -66,43 +66,43 @@ Favourite* SavedFavourite::getFavouriteHead() {
     return favouriteHead;
 }
 
-void SavedFavourite::writeFavourite() {
-    ofstream file;
-    file.open("QSS.csv");
-    if (!file.is_open()) {
-        cout << "File not found" << endl;
-    }
-    else {
-        Favourite* temp = favouriteHead;
-        while (temp != NULL) {
-            if (temp->userId != currentUser.userId) {
-                file << temp->userId << "," << temp->userFavRankArr[0] << "|" << temp->userFavRankArr[1] << "|" << temp->userFavRankArr[2] << "," << temp->counter << endl;
-                temp = temp->nextNode;
-            }
-            else {
-                temp->counter = arrLength;
-                file << temp->userId << "," << temp->userFavRankArr[0] << "|" << temp->userFavRankArr[1] << "|" << temp->userFavRankArr[2] << "," << temp->counter << endl;
-            }
-        }
-    }
-    file.close();
-}
+//void SavedFavourite::writeFavourite() {
+//    ofstream file;
+//    file.open("QSS.csv");
+//    if (!file.is_open()) {
+//        cout << "File not found" << endl;
+//    }
+//    else {
+//        Favourite* temp = favouriteHead;
+//        while (temp != NULL) {
+//            if (temp->userId != currentUser.userId) {
+//                file << temp->userId << "," << temp->userFavRankArr[0] << "|" << temp->userFavRankArr[1] << "|" << temp->userFavRankArr[2] << "," << temp->counter << endl;
+//                temp = temp->nextNode;
+//            }
+//            else {
+//                temp->counter = arrLength;
+//                file << temp->userId << "," << temp->userFavRankArr[0] << "|" << temp->userFavRankArr[1] << "|" << temp->userFavRankArr[2] << "," << temp->counter << endl;
+//            }
+//        }
+//    }
+//    file.close();
+//}
 
-void SavedFavourite::isFavourited(int rankNumber) {
-    Favourite* temp = favouriteHead;
-    while (temp != NULL) {
-        if (temp->userId == currentUser.userId) {
-            for (int i = 0; i < 3; i++) {
-                if (temp->userFavRankArr[i] == rankNumber) {
-                    cout << "You have already favourited this university!" << endl;
-                    return;
-                }
-                else if (temp->userFavRankArr[i] == 0) {
-                    temp->userFavRankArr[i] = rankNumber;
-                    cout << "University has been favourited!" << endl;
-                    return;
-                }
-            }
-        }
-    }
-}
+//void SavedFavourite::isFavourited(int rankNumber) {
+//    Favourite* temp = favouriteHead;
+//    while (temp != NULL) {
+//        if (temp->userId == currentUser.userId) {
+//            for (int i = 0; i < 3; i++) {
+//                if (temp->userFavRankArr[i] == rankNumber) {
+//                    cout << "You have already favourited this university!" << endl;
+//                    return;
+//                }
+//                else if (temp->userFavRankArr[i] == 0) {
+//                    temp->userFavRankArr[i] = rankNumber;
+//                    cout << "University has been favourited!" << endl;
+//                    return;
+//                }
+//            }
+//        }
+//    }
+//}
