@@ -1,1 +1,0 @@
-#include "RegisteredCustomer.h"
