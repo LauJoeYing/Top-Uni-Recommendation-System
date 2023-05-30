@@ -127,7 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Top-Uni-Recommendation-System.cpp" />
+    <ClCompile Include="..\..\..\..\..\OneDrive\Desktop\Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\OneDrive\Desktop\Feedback.h" />
+    <ClInclude Include="..\..\..\..\..\OneDrive\Desktop\File.h" />
+    <ClInclude Include="..\..\..\..\..\OneDrive\Desktop\University.h" />
+    <ClInclude Include="..\..\..\..\..\OneDrive\Desktop\User.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\OneDrive\Desktop\DontReadMe.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
